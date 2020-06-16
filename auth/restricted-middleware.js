@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   // add code here to verify users are logged in
-  const token = req.header.authorization;
+  const token = req.headers.authorization;
   const secret = process.env.JWT_SECRET || "big secret";
   if (token) {
     jwt.verify(token, secret, (error, decodedToken) => {

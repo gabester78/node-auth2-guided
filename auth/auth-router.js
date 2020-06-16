@@ -39,6 +39,7 @@ router.post("/login", (req, res) => {
     Users.findBy({ username: username })
       .then(([user]) => {
         // compare the password the hash stored in the database
+        console.log("user", user);
         if (user && bcryptjs.compareSync(password, user.password)) {
           const token = createToken(user);
           res.status(200).json({ token, message: "Welcome to our API" });
